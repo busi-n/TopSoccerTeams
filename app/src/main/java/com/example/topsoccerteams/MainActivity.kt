@@ -3,6 +3,7 @@ package com.example.topsoccerteams
 import android.annotation.SuppressLint
 import android.hardware.biometrics.BiometricManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,11 +11,19 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import java.util.Arrays
 
+//created functiion to log array values
+
+fun logArrValues(arr: Array<String>){
+    Log.v("Array Values: " , Arrays.toString(arr))
+
+}
+
 class MainActivity : AppCompatActivity() {
 
 
     val teams =  arrayOf<String> ( "Mam Sundowns FC", " Orlando Pirates", "Bidvest Wits",
         "Stellenbosch FC", " Sek united FC")
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         var teamsDisplay = ""
         var count = 0
 
+        // calling logArrValues function to log array values
+        logArrValues(teams)
+
+
+
         // re-assigning position 0 of the teams array
         teams[0] = "Mam Sundowns FC :)"
 
@@ -33,13 +47,10 @@ class MainActivity : AppCompatActivity() {
             teamsDisplay += " $({teams[counter]}\n"
             count++
         }
-
-            teamsDisplay +=" ${teams[0]}\n"
-            teamsDisplay +="${teams[1]}\n"
-            teamsDisplay +="${teams[2]}\n"
-            teamsDisplay +="${teams[3]}\n"
-            teamsDisplay +="${teams[4]}\n"
-
+        // for loop to iterate through the teams array and display them
+        for (team in teams){
+            teamsDisplay += "${teams}\n"
+        }
         //displaying top soccer team in text view on UI
         teamsTxt.text = Arrays.toString(teams)
 
