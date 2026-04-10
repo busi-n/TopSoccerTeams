@@ -13,9 +13,14 @@ import java.util.Arrays
 
 //created functiion to log array values
 
-fun logArrValues(arr: Array<String>){
-    Log.v("Array Values: " , Arrays.toString(arr))
+fun logArrValues(arr: Array<String>, limit: Int =0) {
+    //if statement to  check if thers a limit - if ther is a limit , cut the array at the index
+    if (limit == 0) {
+        Log.v("Array Values: " , Arrays.toString(arr))
+    } else {
 
+        Log.v("Array Values: ", Arrays.toString(arr.sliceArray(0..limit - 1)))
+    }
 }
 
 class MainActivity : AppCompatActivity() {
